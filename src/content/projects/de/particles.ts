@@ -7,48 +7,17 @@ import particles2 from "../../../assets/images/projects/particles/particles-2.we
 import type { ProjectContent } from "../../types";
 
 export default {
-  title: "WebGL Particles",
+  title: "Hiệu ứng hạt WebGL",
   theme: "dark",
   tags: ["ogl", "javascript", "glsl"],
   live: "https://particles.david-hckh.com/",
   videoBorder: false,
   description:
-    "Ein experimentelles WebGL-Projekt mit OGL.js, das Partikel mithilfe mathematischer Formeln und Noise-Funktionen animiert.<br/><br/>Die Partikel bewegen sich fließend zwischen verschiedenen 3D-Formen, die ineinander übergehen.",
+    "Đây là thử nghiệm WebGL dùng OGL.js để tạo chuyển động hạt bằng công thức toán học và noise function.<br/><br/>Các hạt chuyển tiếp mượt giữa nhiều khối 3D, tạo cảm giác sống động và phù hợp cho những trải nghiệm web giàu hình ảnh.",
   components: [
-    {
-      type: "media",
-      props: {
-        type: "video",
-        src: videoParticles,
-        caption: "Animiertes Partikelsystem",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: particles0,
-        alt: "Knoten Form",
-        caption: "Knoten Form",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: particles1,
-        alt: "Donut Form",
-        caption: "Donut Form",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: particles2,
-        alt: "Kugel Form",
-        caption: "Kugel Form",
-      },
-    },
+    { type: "media", props: { type: "video", src: videoParticles, caption: "Hệ thống hạt động" } },
+    { type: "media", props: { type: "image", src: particles0, alt: "Hình nút xoắn", caption: "Hình nút xoắn" } },
+    { type: "media", props: { type: "image", src: particles1, alt: "Hình vòng", caption: "Hình vòng" } },
+    { type: "media", props: { type: "image", src: particles2, alt: "Hình cầu", caption: "Hình cầu" } },
   ],
 } as const satisfies ProjectContent;

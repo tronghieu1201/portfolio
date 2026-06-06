@@ -12,43 +12,11 @@ export default {
   videoBorder: false,
   live: "https://www.streakon.app",
   description:
-    "StreakOn helps small groups stay consistent with daily habits through shared streaks and simple check-ins.<br/><br/>The app was designed around low friction interactions, mobile usability, and lightweight social features, using Next.js, Node.js, PostgreSQL, and Redis.",
+    "StreakOn giúp cá nhân và nhóm nhỏ duy trì thói quen hằng ngày thông qua chuỗi ngày hoàn thành, nhắc nhở và tương tác đơn giản.<br/><br/>Ứng dụng được thiết kế ưu tiên thao tác nhanh trên di động, trải nghiệm ít ma sát và các tính năng xã hội nhẹ để giữ động lực lâu dài.",
   components: [
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: streakon0,
-        alt: "Solo and group streaks",
-        caption: "Solo and group streaks",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: streakon1,
-        alt: "Streak progress",
-        caption: "Streak progress",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: streakon2,
-        alt: "Cheer for friends",
-        caption: "Cheer for friends",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: streakon3,
-        alt: "Invite Flow",
-        caption: "Invite Flow",
-      },
-    },
+    { type: "media", props: { type: "image", src: streakon0, alt: "Chuỗi cá nhân và nhóm", caption: "Chuỗi cá nhân và nhóm" } },
+    { type: "media", props: { type: "image", src: streakon1, alt: "Tiến độ thói quen", caption: "Tiến độ thói quen" } },
+    { type: "media", props: { type: "image", src: streakon2, alt: "Cổ vũ bạn bè", caption: "Cổ vũ bạn bè" } },
+    { type: "media", props: { type: "image", src: streakon3, alt: "Luồng mời tham gia", caption: "Luồng mời tham gia" } },
   ],
 } as const satisfies ProjectContent;

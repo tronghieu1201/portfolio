@@ -1,17 +1,13 @@
 Copyright (c) 2026 David Heckhoff
 
-Original portfolio:
+Portfolio gốc:
 https://david-hckh.com
 
-Permission is hereby granted to use, copy, modify, and distribute this software for personal and educational purposes only, subject to the following conditions:
+Giấy phép sử dụng source này có các điều kiện chính:
 
-1. Attribution to the original author (David Heckhoff) and the original portfolio link (https://david-hckh.com) must be clearly visible in:
-   - the source code,
-   - the repository README,
-   - and any public deployment using substantial portions of this project.
+1. Cần giữ ghi nhận cho tác giả gốc David Heckhoff và liên kết portfolio gốc khi sử dụng phần đáng kể của dự án.
+2. Không được tự nhận thiết kế/source gốc là do mình tạo ra hoàn toàn.
+3. Không được bán lại, phân phối lại hoặc sử dụng thương mại phần đáng kể của dự án nếu chưa có sự cho phép bằng văn bản từ tác giả gốc.
+4. Khi chỉnh sửa thành portfolio cá nhân, hãy thay nội dung cá nhân của bạn nhưng vẫn giữ phần ghi nhận phù hợp.
 
-2. Existing credit notices and attribution comments in the source code may not be removed or altered.
-
-3. Commercial use, resale, or redistribution of this project or substantial portions of it is prohibited without prior written permission from the author.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+File này được dịch sang tiếng Việt để dễ đọc trong repo đã chỉnh sửa. Nội dung ghi nhận tác giả gốc vẫn được giữ lại.

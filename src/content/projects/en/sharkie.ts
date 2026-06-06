@@ -15,60 +15,13 @@ export default {
   live: "https://sharkie.david-hckh.com/",
   source: "https://github.com/davidhckh/sharkie-game",
   description:
-    "Sharkie is a 2D underwater adventure game built with vanilla JavaScript and HTML5 Canvas.<br/><br/>The project is structured around object-oriented programming principles, featuring custom classes for entities, enemies, and game systems, alongside smooth animations, combat mechanics, and layered parallax backgrounds.",
+    "Sharkie là game phiêu lưu 2D dưới biển được xây dựng bằng JavaScript thuần và HTML5 Canvas.<br/><br/>Dự án dùng hướng lập trình đối tượng cho nhân vật, kẻ địch và hệ thống game, kết hợp animation, chiến đấu và nhiều lớp nền parallax.",
   components: [
-    {
-      type: "media",
-      props: {
-        type: "video",
-        src: videoSharkie,
-        caption: "Gameplay",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: sharkie0,
-        alt: "Entities And Map Design",
-        caption: "Entities And Map Design",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: sharkie1,
-        alt: "Boss Fight",
-        caption: "Boss Fight",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: sharkie2,
-        alt: "Mission",
-        caption: "Mission",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: sharkie3,
-        alt: "Victory Screen",
-        caption: "Victory Screen",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: sharkie4,
-        alt: "Death Screen",
-        caption: "Death Screen",
-      },
-    },
+    { type: "media", props: { type: "video", src: videoSharkie, caption: "Lối chơi" } },
+    { type: "media", props: { type: "image", src: sharkie0, alt: "Thiết kế nhân vật và bản đồ", caption: "Thiết kế nhân vật và bản đồ" } },
+    { type: "media", props: { type: "image", src: sharkie1, alt: "Đấu boss", caption: "Đấu boss" } },
+    { type: "media", props: { type: "image", src: sharkie2, alt: "Nhiệm vụ", caption: "Nhiệm vụ" } },
+    { type: "media", props: { type: "image", src: sharkie3, alt: "Màn hình chiến thắng", caption: "Màn hình chiến thắng" } },
+    { type: "media", props: { type: "image", src: sharkie4, alt: "Màn hình thất bại", caption: "Màn hình thất bại" } },
   ],
 } as const satisfies ProjectContent;

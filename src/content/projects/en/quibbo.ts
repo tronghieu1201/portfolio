@@ -15,69 +15,14 @@ export default {
   tags: ["three", "node", "kubernetes", "redis", "postgresql"],
   videoBorder: true,
   description:
-    "Quibbo is a platform for fast, round-based multiplayer games. It brings together matchmaking, customizable 3D avatars, and account integration with ranked rewards.<br/><br/>The project started as a technical experiment and grew into a scalable system for testing new game ideas.",
+    "Quibbo là nền tảng cho các trò chơi nhiều người theo vòng ngắn, kết hợp ghép trận, nhân vật 3D tùy chỉnh và hệ thống tài khoản.<br/><br/>Dự án được xây dựng như một thử nghiệm kỹ thuật rồi phát triển thành nền tảng có thể mở rộng để kiểm thử nhiều ý tưởng game khác nhau.",
   components: [
-    {
-      type: "media",
-      props: {
-        type: "video",
-        src: videoQuibbo,
-        caption: "User Experience",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: quibbo0,
-        alt: "Avatar Creator",
-        caption: "Avatar Creator",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: quibbo1,
-        alt: "Multiplayer Tic-Tac-Toe",
-        caption: "Multiplayer Tic-Tac-Toe",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: quibbo2,
-        alt: "Multiple Mini-Games",
-        caption: "Multiple Mini-Games",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: quibbo3,
-        alt: "Avatar Variations",
-        caption: "Avatar Variations",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: quibbo4,
-        alt: "Responsive Design",
-        caption: "Responsive Design",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: quibbo5,
-        alt: "Dark Mode",
-        caption: "Dark Mode",
-      },
-    },
+    { type: "media", props: { type: "video", src: videoQuibbo, caption: "Trải nghiệm người dùng" } },
+    { type: "media", props: { type: "image", src: quibbo0, alt: "Tạo nhân vật", caption: "Tạo nhân vật" } },
+    { type: "media", props: { type: "image", src: quibbo1, alt: "Cờ ca rô nhiều người", caption: "Cờ ca rô nhiều người" } },
+    { type: "media", props: { type: "image", src: quibbo2, alt: "Nhiều mini game", caption: "Nhiều mini game" } },
+    { type: "media", props: { type: "image", src: quibbo3, alt: "Biến thể nhân vật", caption: "Biến thể nhân vật" } },
+    { type: "media", props: { type: "image", src: quibbo4, alt: "Giao diện responsive", caption: "Giao diện responsive" } },
+    { type: "media", props: { type: "image", src: quibbo5, alt: "Chế độ tối", caption: "Chế độ tối" } },
   ],
 } as const satisfies ProjectContent;

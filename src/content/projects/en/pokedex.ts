@@ -15,51 +15,12 @@ export default {
   source: "https://github.com/davidhckh/pokedex",
   videoBorder: true,
   description:
-    "One of my first web projects to practice basic web development concepts. The Pokédex is open source so other developers can learn the same way I did.<br/><br/>It also interacts with a public API, to get more experience with asynchronous data fetching.",
+    "Pokédex là một dự án học lập trình web cơ bản, tập trung vào HTML, CSS, JavaScript và cách tổ chức giao diện dễ hiểu.<br/><br/>Ứng dụng có kết nối API công khai để luyện tập xử lý dữ liệu bất đồng bộ, tìm kiếm và hiển thị thông tin theo thời gian thực.",
   components: [
-    {
-      type: "media",
-      props: {
-        type: "video",
-        src: videoPokedex,
-        caption: "Pokédex App",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: pokedex0,
-        alt: "Default View",
-        caption: "Default View",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: pokedex1,
-        alt: "Search Function",
-        caption: "Search Function",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: pokedex2,
-        alt: "Responsive Design",
-        caption: "Responsive Design",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: pokedex3,
-        alt: "Lazy Loading",
-        caption: "Lazy Loading",
-      },
-    },
+    { type: "media", props: { type: "video", src: videoPokedex, caption: "Ứng dụng Pokédex" } },
+    { type: "media", props: { type: "image", src: pokedex0, alt: "Giao diện mặc định", caption: "Giao diện mặc định" } },
+    { type: "media", props: { type: "image", src: pokedex1, alt: "Chức năng tìm kiếm", caption: "Chức năng tìm kiếm" } },
+    { type: "media", props: { type: "image", src: pokedex2, alt: "Giao diện responsive", caption: "Giao diện responsive" } },
+    { type: "media", props: { type: "image", src: pokedex3, alt: "Tải dữ liệu tối ưu", caption: "Tải dữ liệu tối ưu" } },
   ],
 } as const satisfies ProjectContent;

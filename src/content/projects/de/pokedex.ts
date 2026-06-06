@@ -15,51 +15,12 @@ export default {
   source: "https://github.com/davidhckh/pokedex",
   videoBorder: true,
   description:
-    "Eines meiner ersten Webprojekte, um Kernkonzepte der Webentwicklung zu üben. Der Pokédex ist Open Source, damit andere Entwickler auf dieselbe Weise lernen können wie ich.<br/><br/>Er interagiert außerdem mit einer öffentlichen API, um zusätzliche Erfahrung zu sammeln.",
+    "Pokédex là một dự án học lập trình web cơ bản, tập trung vào HTML, CSS, JavaScript và cách tổ chức giao diện dễ hiểu.<br/><br/>Ứng dụng có kết nối API công khai để luyện tập xử lý dữ liệu bất đồng bộ, tìm kiếm và hiển thị thông tin theo thời gian thực.",
   components: [
-    {
-      type: "media",
-      props: {
-        type: "video",
-        src: videoPokedex,
-        caption: "Pokédex Anwendung",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: pokedex0,
-        alt: "Standardansicht",
-        caption: "Standardansicht",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: pokedex1,
-        alt: "Suchfunktion",
-        caption: "Suchfunktion",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: pokedex2,
-        alt: "Responsives Design",
-        caption: "Responsives Design",
-      },
-    },
-    {
-      type: "media",
-      props: {
-        type: "image",
-        src: pokedex3,
-        alt: "Lazy-Loading",
-        caption: "Lazy-Loading",
-      },
-    },
+    { type: "media", props: { type: "video", src: videoPokedex, caption: "Ứng dụng Pokédex" } },
+    { type: "media", props: { type: "image", src: pokedex0, alt: "Giao diện mặc định", caption: "Giao diện mặc định" } },
+    { type: "media", props: { type: "image", src: pokedex1, alt: "Chức năng tìm kiếm", caption: "Chức năng tìm kiếm" } },
+    { type: "media", props: { type: "image", src: pokedex2, alt: "Giao diện responsive", caption: "Giao diện responsive" } },
+    { type: "media", props: { type: "image", src: pokedex3, alt: "Tải dữ liệu tối ưu", caption: "Tải dữ liệu tối ưu" } },
   ],
 } as const satisfies ProjectContent;

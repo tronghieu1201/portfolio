@@ -1,43 +1,44 @@
-# Portfolio (2025)
+# Portfolio
 
-Personal portfolio site: project case studies, lightweight 3D and shader demos, bilingual copy (English and German).
+Website portfolio cá nhân được xây dựng bằng Vue 3, TypeScript và Vite. Giao diện có hiệu ứng chuyển động, một số thành phần 3D/WebGL, âm thanh và nội dung dự án.
 
-Built with **Vue 3**, **TypeScript**, and **Vite**. Motion via **GSAP** and **Lenis**, 3D via **three.js**, audio via **Howler**. GLSL is compiled through **vite-plugin-glsl**.
+## Chạy local
 
-## Scripts
+```powershell
+npm install
+npm run dev
+```
 
-| Command        | Description                          |
-| -------------- | ------------------------------------ |
-| `npm run dev`   | Dev server on port **3000** (`strictPort`) |
-| `npm run build` | `vue-tsc` then production bundle to `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run typecheck` | Typecheck only (`vue-tsc -b`) |
+Mở trình duyệt tại:
 
-## Content
+```text
+http://localhost:3000
+```
 
-- **Projects**: `src/content/projects/{en,de}/<slug>.ts` — copy, tags, media, links. Slugs must align with `projectIds` in `src/content/projects/index.ts`.
-- **Previews / listing**: `src/content/projects/previews/`.
-- **Tags**: variants and labels live in `src/components/tagVariants.ts` (used by `Tag.vue` and content types).
+## Lệnh thường dùng
 
-## Stack (high level)
+| Lệnh | Mô tả |
+| --- | --- |
+| `npm run dev` | Chạy dev server ở máy local |
+| `npm run build` | Kiểm tra TypeScript và build bản production vào `dist/` |
+| `npm run preview` | Xem thử bản production sau khi build |
+| `npm run typecheck` | Kiểm tra TypeScript |
 
-- Vue 3 (`<script setup>`), SCSS with shared mixins (`src/assets/styles/`)
-- i18n helpers under `src/i18n/`
-- WebGL / GLSL under `src/three/` where applicable
+## Nội dung chính
 
-## Credits & Attribution
+- Dự án: `src/content/projects/{en,de}/<slug>.ts`
+- Danh sách preview: `src/content/projects/previews/`
+- Text giao diện: `src/i18n/messages/namespaces/common/`
+- Link liên hệ/mạng xã hội: `src/content/social.ts`
+- Ảnh, video, model và âm thanh: `src/assets/`, `public/`, `sounds/`
 
-This project was created and designed by David Heckhoff.
+## Ghi nhận
 
-If you use this project or substantial parts of its source code as a base for your own portfolio or work, attribution must be preserved.
+Source gốc được tạo và thiết kế bởi David Heckhoff.
 
-Please keep:
+Dự án này được chỉnh sửa lại để làm portfolio cá nhân. Theo yêu cầu từ source gốc, phần ghi nhận tác giả ban đầu và liên kết portfolio gốc cần được giữ lại khi sử dụng phần đáng kể của source.
 
-- existing credit comments in the source code
-- this attribution section in the README
-- a visible reference to the original project/repository in derivative works
+Portfolio gốc:
+https://david-hckh.com
 
-Original portfolio:
--> https://david-hckh.com
-
-Commercial reuse or redistribution of substantial portions of this project without permission is prohibited.
+Việc sử dụng thương mại, bán lại hoặc phân phối lại phần đáng kể của source cần tuân theo điều khoản của tác giả gốc.
