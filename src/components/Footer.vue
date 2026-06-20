@@ -13,6 +13,7 @@ import { ref, onMounted } from "vue";
 
 interface Props {
   withSocial?: boolean;
+  showVisitorCounter?: boolean;
 }
 
 const handleBackToTop = () => {
@@ -20,7 +21,7 @@ const handleBackToTop = () => {
   lenis.value.scrollTo(0);
 };
 
-const { withSocial = true } = defineProps<Props>();
+const { withSocial = true, showVisitorCounter = false } = defineProps<Props>();
 
 const visitorCount = ref<number | null>(null);
 const visitorError = ref(false);
@@ -42,7 +43,9 @@ const fetchVisitorCount = async () => {
 };
 
 onMounted(() => {
-  fetchVisitorCount();
+  if (showVisitorCounter) {
+    fetchVisitorCount();
+  }
 });
 </script>
 
@@ -88,8 +91,10 @@ onMounted(() => {
       </div>
       <div class="footer-credits">
         <p>© {{ new Date().getFullYear() }} Trọng Hiếu</p>
-        <p v-if="visitorCount !== null" class="footer-visitors">Lượt truy cập: {{ visitorCount }}</p>
-        <p v-else-if="visitorError" class="footer-visitors">Không tải được lượt truy cập</p>
+        <template v-if="showVisitorCounter">
+          <p v-if="visitorCount !== null" class="footer-visitors">Lượt truy cập: {{ visitorCount }}</p>
+          <p v-else-if="visitorError" class="footer-visitors">Không tải được lượt truy cập</p>
+        </template>
       </div>
     </div>
   </footer>
