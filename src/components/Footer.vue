@@ -9,6 +9,7 @@ import ButtonRound from "./ButtonRound.vue";
 import { lenis } from "../composables/useScroll";
 import ArrowRightLong from "./icons/ArrowRightLong.vue";
 import { withBasePath } from "../utils/basePath";
+import { ref, onMounted } from "vue";
 
 interface Props {
   withSocial?: boolean;
@@ -20,6 +21,29 @@ const handleBackToTop = () => {
 };
 
 const { withSocial = true } = defineProps<Props>();
+
+const visitorCount = ref<number | null>(null);
+const visitorError = ref(false);
+
+const fetchVisitorCount = async () => {
+  try {
+    const response = await fetch("https://76flfqchaf.execute-api.ap-southeast-2.amazonaws.com/visitor");
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch visitor count");
+    }
+
+    const data = await response.json();
+    visitorCount.value = data.count;
+  } catch (error) {
+    visitorError.value = true;
+    console.error("Visitor counter error:", error);
+  }
+};
+
+onMounted(() => {
+  fetchVisitorCount();
+});
 </script>
 
 <template>
@@ -64,6 +88,8 @@ const { withSocial = true } = defineProps<Props>();
       </div>
       <div class="footer-credits">
         <p>© {{ new Date().getFullYear() }} Trọng Hiếu</p>
+        <p v-if="visitorCount !== null" class="footer-visitors">Lượt truy cập: {{ visitorCount }}</p>
+        <p v-else-if="visitorError" class="footer-visitors">Không tải được lượt truy cập</p>
       </div>
     </div>
   </footer>
@@ -149,6 +175,10 @@ const { withSocial = true } = defineProps<Props>();
     width: 100%;
     font-size: var(--font-size-sm);
     text-align: center;
+  }
+
+  &-visitors {
+    color: var(--color-text-300);
   }
 
   &-notch {
