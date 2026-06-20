@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { useRouter } from "../composables/useRouter";
+import { withBasePath } from "../utils/basePath";
 
 const attrs = useAttrs();
 const router = useRouter();
@@ -41,6 +42,8 @@ const handleClick = (event: MouseEvent) => {
     router.push(resolvedTo.value);
   }
 };
+
+const hrefValue = computed(() => (props.external ? props.href || props.to : withBasePath(resolvedTo.value)));
 </script>
 
 <template>
@@ -58,7 +61,7 @@ const handleClick = (event: MouseEvent) => {
   <component
     v-else
     :is="props.renderAs || 'a'"
-    :href="resolvedTo"
+    :href="hrefValue"
     @click="handleClick"
     v-bind="attrs"
   >

@@ -8,6 +8,7 @@ import { locale } from "../i18n/store";
 import ButtonRound from "./ButtonRound.vue";
 import { lenis } from "../composables/useScroll";
 import ArrowRightLong from "./icons/ArrowRightLong.vue";
+import { withBasePath } from "../utils/basePath";
 
 interface Props {
   withSocial?: boolean;
@@ -42,7 +43,7 @@ const { withSocial = true } = defineProps<Props>();
           <div class="footer-top-links-legal">
             <Clickable renderAs="div">
               <Link
-                :href="locale === 'de' ? '/de/privacy' : '/privacy'"
+                :href="withBasePath(locale === 'de' ? '/de/privacy' : '/privacy')"
                 class="footer-link"
                 :external="true"
                 data-cursor="circle-white"
@@ -51,7 +52,7 @@ const { withSocial = true } = defineProps<Props>();
             </Clickable>
             <Clickable renderAs="div">
               <Link
-                :href="locale === 'de' ? '/de/legal' : '/legal'"
+                :href="withBasePath(locale === 'de' ? '/de/legal' : '/legal')"
                 class="footer-link children-unclickable"
                 :external="true"
                 data-cursor="circle-white"
