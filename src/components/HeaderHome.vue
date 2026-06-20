@@ -7,7 +7,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useHeaderTheme } from "../composables/useHeaderTheme";
 import { projectId } from "../composables/useRouteObserver";
 
+const contactUrl = "https://tronghieu1201.github.io/bio_itme/";
+
 const handleLinkClick = (link: string) => {
+  if (link === "#contact") {
+    window.open(contactUrl, "_blank", "noopener,noreferrer");
+    return;
+  }
+
   if (!lenis.value) return;
   lenis.value.scrollTo(link);
 };

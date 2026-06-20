@@ -6,7 +6,6 @@ import gsap from "gsap";
 import vertexShader from "../../shaders/heart/vertex.glsl";
 import fragmentShader from "../../shaders/heart/fragment.glsl";
 import { room } from ".";
-import { playSound } from "../../../features/sounds/utils/sounds";
 
 import type { ClickableBox3 } from "../../types";
 
@@ -70,9 +69,6 @@ const handleClick = () => {
   if (isJumping || !mesh || !wings) return;
   isJumping = true;
   const tl = gsap.timeline();
-
-  playSound("bird");
-
   tl.add(() => {
     isJumping = false;
   }, 0.8);

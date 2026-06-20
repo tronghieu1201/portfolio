@@ -28,6 +28,7 @@ const nextProject = computed(() => {
 
   const currentIndex = previews.findIndex((p) => p.slug === projectId);
   if (currentIndex === -1) return null;
+  if (previews.length <= 1) return null;
 
   const nextIndex = (currentIndex + 1) % previews.length;
 

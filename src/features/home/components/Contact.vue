@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { transitions } from "../../../animations";
 import { t } from "../../../i18n/utils/translate";
 import Social from "../../../components/Social.vue";
+import Link from "../../../components/Link.vue";
 
 const contactElement = ref<HTMLElement | null>(null);
 
@@ -20,7 +21,15 @@ onUnmounted(() => {
 <template>
   <div class="contact grid" ref="contactElement">
     <div class="contact-content">
-      <h2 class="contact-title" v-html="t('lets-work-together')"></h2>
+      <Link
+        href="https://tronghieu1201.github.io/bio_itme/"
+        external
+        class="contact-title-link"
+        data-cursor="arrow-external"
+        data-hoversound="hover"
+      >
+        <h2 class="contact-title" v-html="t('lets-work-together')"></h2>
+      </Link>
       <Social variant="background" />
     </div>
   </div>
@@ -73,6 +82,12 @@ onUnmounted(() => {
 
     @include mixins.mq("xl") {
       font-size: var(--font-size-title-xl);
+    }
+
+    &-link {
+      color: inherit;
+      text-decoration: none;
+      width: fit-content;
     }
   }
 }

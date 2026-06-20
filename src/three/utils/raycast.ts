@@ -2,7 +2,6 @@ import gsap from "gsap";
 import { Ray, Vector2, Vector3 } from "three";
 import { camera } from "../core/camera";
 import { threeSizes } from "./sizes";
-import { playSound } from "../../features/sounds/utils/sounds";
 
 import type { ClickableBox3 } from "../types";
 
@@ -70,12 +69,7 @@ const tick = () => {
   if (!isTouchDevice) {
     performRaycast();
 
-    // Check for hover state changes and play sounds
     if (hoveringBox !== previousHoveringBox) {
-      // If we started hovering over a new box with a hover sound
-      if (hoveringBox && hoveringBox.hoverSound && !previousHoveringBox) {
-        playSound(hoveringBox.hoverSound as any);
-      }
       previousHoveringBox = hoveringBox;
     }
   }

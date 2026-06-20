@@ -19,7 +19,6 @@ const handleBackToTop = () => {
 };
 
 const { withSocial = true } = defineProps<Props>();
-const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
 </script>
 
 <template>
@@ -32,9 +31,8 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
         @click="handleBackToTop"
         @keydown.enter="handleBackToTop"
         data-cursor="circle-white"
-        data-sound="click"
       >
-        <ButtonRound renderAs="div" variant="border" class="children-unclickable" data-hoversound="hover">
+        <ButtonRound renderAs="div" variant="border" class="children-unclickable">
           <ArrowRightLong class="footer-back-to-top-icon" />
         </ButtonRound>
       </div>
@@ -48,8 +46,6 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
                 class="footer-link"
                 :external="true"
                 data-cursor="circle-white"
-                data-sound="click"
-                data-hoversound="hover"
                 >{{ t("privacy") }}</Link
               >
             </Clickable>
@@ -59,8 +55,6 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
                 class="footer-link children-unclickable"
                 :external="true"
                 data-cursor="circle-white"
-                data-sound="click"
-                data-hoversound="hover"
                 >{{ t("legal") }}</Link
               >
             </Clickable>
@@ -68,36 +62,6 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
         </div>
       </div>
       <div class="footer-credits">
-        <div v-if="showAttribution" class="footer-credits-built">
-          <p>
-            {{ t("original-concept-by") }}
-          </p>
-          <Clickable renderAs="div">
-            <Link
-              href="https://david-hckh.com"
-              class="footer-link children-unclickable"
-              external
-              data-cursor="circle-white"
-              data-hoversound="hover"
-              >David Heckhoff</Link
-            >
-          </Clickable>
-        </div>
-        <div class="footer-credits-music">
-          <p>
-            {{ t("music-produced-by") }}
-          </p>
-          <Clickable renderAs="div">
-            <Link
-              href="https://soundcloud.com/hmsurf"
-              class="footer-link children-unclickable"
-              external
-              data-cursor="circle-white"
-              data-hoversound="hover"
-              >HM Surf</Link
-            >
-          </Clickable>
-        </div>
         <p>© {{ new Date().getFullYear() }} Trọng Hiếu</p>
       </div>
     </div>
@@ -184,14 +148,6 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
     width: 100%;
     font-size: var(--font-size-sm);
     text-align: center;
-
-    &-built,
-    &-music {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: var(--space-xxs);
-    }
   }
 
   &-notch {
@@ -204,4 +160,3 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
   }
 }
 </style>
-

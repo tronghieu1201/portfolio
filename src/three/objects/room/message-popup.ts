@@ -5,7 +5,6 @@ import { planeGeometry } from "../../common/geometries";
 import vertexShader from "../../shaders/message-popup/vertex.glsl";
 import fragmentShader from "../../shaders/message-popup/fragment.glsl";
 import gsap from "gsap";
-import { playSound } from "../../../features/sounds/utils/sounds";
 
 let mesh: Mesh | null = null;
 let material: ShaderMaterial | null = null;
@@ -58,7 +57,6 @@ const show = () => {
   );
   tl.set(mesh, { visible: false });
 
-  playSound("notification");
 };
 
 const destroy = () => {

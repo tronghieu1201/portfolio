@@ -9,7 +9,6 @@ import { desktops } from "./desktops";
 import { mouse } from "./mouse";
 import { messagePopup } from "./message-popup";
 import { penguin } from "./penguin";
-import { music } from "./music";
 
 import type { Object3D } from "three";
 
@@ -22,7 +21,6 @@ let objects: {
   chair: Mesh;
   frame: Mesh;
   mouse: Mesh;
-  music: Mesh;
   penguin: Mesh;
   "penguin-wing-left": Mesh;
   "penguin-wing-right": Mesh;
@@ -40,8 +38,6 @@ const init = () => {
   if (objects?.mouse) mouse.init(objects.mouse);
   if (objects?.penguin)
     penguin.init(objects.penguin, { left: objects["penguin-wing-left"], right: objects["penguin-wing-right"] });
-
-  if (objects?.music) music.init(objects.music);
 };
 
 const initObjects = () => {
@@ -55,7 +51,6 @@ const initObjects = () => {
     chair: resource.scene.children.find((child: Object3D) => child.name === "chair"),
     frame: resource.scene.children.find((child: Object3D) => child.name === "frame"),
     mouse: resource.scene.children.find((child: Object3D) => child.name === "mouse"),
-    music: resource.scene.children.find((child: Object3D) => child.name === "music"),
     plant: resource.scene.children.find((child: Object3D) => child.name === "plant"),
     room: resource.scene.children.find((child: Object3D) => child.name === "room"),
     shelf: resource.scene.children.find((child: Object3D) => child.name === "shelf"),
@@ -93,7 +88,6 @@ const tick = () => {
   }
 
   penguin.tick();
-  music.tick();
 };
 
 const destroy = () => {
@@ -104,7 +98,6 @@ const destroy = () => {
   desktops.destroy();
   mouse.destroy();
   penguin.destroy();
-  music.destroy();
 };
 
 export const room = { init, destroy, group, chairScrollRotation };

@@ -4,11 +4,8 @@ import { desktops } from "../room/desktops";
 import { sceneWeights } from "../../../animations/scenes";
 import { messagePopup } from "../room/message-popup";
 import { sizes } from "../../../utils/sizes";
-import { playSound } from "../../../features/sounds/utils/sounds";
-import { sprites } from "../../../features/sounds/definitions/sprites";
 
 let ctx: gsap.Context | null = null;
-let currentId: number | undefined;
 const isActive = { value: false };
 
 const INTERVAL_DURATION = 7;
@@ -20,10 +17,6 @@ const init = () => {
 
 const handleWindowVisible = () => {
   if (!isActive.value) return;
-  if (currentId) {
-    sprites.room.howl.stop(currentId);
-    currentId = undefined;
-  }
 };
 
 const startInterval = () => {
@@ -58,15 +51,6 @@ const startInterval = () => {
     tl.add(() => {
       avatarAnimations.play("left-desktop", 0.3);
     }, 0.2);
-
-    if (currentId) {
-      sprites.room.howl.stop(currentId);
-      currentId = undefined;
-    }
-
-    tl.add(() => {
-      currentId = playSound("keyboard");
-    }, 1.6);
 
     desktops.showMessage();
     messagePopup.show();

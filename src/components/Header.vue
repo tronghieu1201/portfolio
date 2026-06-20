@@ -6,14 +6,12 @@ import { t } from "../i18n/utils/translate";
 import { useHeaderTheme } from "../composables/useHeaderTheme";
 import { lenis } from "../composables/useScroll";
 import { projectId } from "../composables/useRouteObserver";
-import { social } from "../content/social";
 import ButtonRound from "./ButtonRound.vue";
 import ArrowRight from "./icons/ArrowRight.vue";
-import SoundsToggle from "./SoundsToggle.vue";
-import { isFeatureEnabled } from "../utils/features";
 import { useRouter } from "../composables/useRouter";
 import { useFirstRoute } from "../composables/useFirstRoute";
 
+const contactUrl = "https://tronghieu1201.github.io/bio_itme/";
 const router = useRouter();
 const { isFirstRoute } = useFirstRoute();
 
@@ -100,14 +98,13 @@ const getInTouchClassNames = computed(() => {
         renderAs="a"
         variant="accent"
         :aria-label="t('get-in-touch')"
-        :href="social.find((item) => item.name === 'mail')?.url ?? ''"
+        :href="contactUrl"
         external
         :class="getInTouchClassNames"
         data-cursor="circle-white"
         data-hoversound="hover"
         >{{ t("get-in-touch") }}</Button
       >
-      <SoundsToggle class="header-sounds-toggle" :isDarkTheme="isDarkTheme" v-if="isFeatureEnabled('sounds')" />
     </div>
   </header>
 </template>
@@ -176,10 +173,6 @@ const getInTouchClassNames = computed(() => {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-  }
-
-  &-music-toggle {
-    display: flex;
   }
 
   &-dark {

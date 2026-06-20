@@ -6,7 +6,6 @@ import PreviewCard from "../../projects/components/PreviewCard.vue";
 import NotchSection from "../../../components/NotchSection.vue";
 import Banner from "../../../components/Banner.vue";
 import { t } from "../../../i18n/utils/translate";
-import { isFeatureEnabled } from "../../../utils/features";
 
 import type { ProjectPreview } from "../../../content/types";
 
@@ -43,7 +42,6 @@ onMounted(loadPreviews);
     <div class="grid">
       <div class="projects-cards">
         <PreviewCard v-for="preview in loadedPreviews" :key="preview.title" :preview="preview" />
-        <PreviewCard v-if="isFeatureEnabled('startProject')" />
       </div>
     </div>
   </div>
@@ -135,24 +133,19 @@ onMounted(loadPreviews);
   }
 
   &-cards {
-    max-width: 100%;
-    flex: 1;
+    width: min(100%, 560px);
+    flex: none;
     grid-column: 1 / span 12;
     display: grid;
     gap: var(--space-lg);
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: 1fr;
 
     @include mixins.mq("md") {
-      grid-column: 1 / span 12;
-    }
-
-    @include mixins.mq("lg") {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       grid-column: 3 / span 8;
     }
 
-    @include mixins.mq("xl") {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    @include mixins.mq("lg") {
+      grid-column: 4 / span 6;
     }
   }
 }

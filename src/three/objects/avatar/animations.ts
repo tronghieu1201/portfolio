@@ -6,9 +6,7 @@ import { resources } from "../../../utils/resources";
 import { sceneWeights } from "../../../animations/scenes";
 import { face } from "./face";
 import { sleepingSprite } from "../contact/sleeping-sprite";
-import { playSound } from "../../../features/sounds/utils/sounds";
 import { isFeatureEnabled } from "../../../utils/features";
-import { stopSnoreRepetition } from "../../../features/sounds/core/contact";
 
 import type { AnimationClip, Object3D } from "three";
 
@@ -175,9 +173,6 @@ const wakeUp = () => {
   const wakeUpAction = actions.get("wake-up");
   const contactIdleAction = actions.get("contact-idle");
   if (!sleepingAction || !wakeUpAction || !contactIdleAction) return;
-
-  stopSnoreRepetition();
-  playSound("gasp");
 
   //crossfade to wake-up
   sleepingAction.crossFadeTo(wakeUpAction, 0.2);
