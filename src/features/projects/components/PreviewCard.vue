@@ -10,6 +10,7 @@ import { t } from "../../../i18n/utils/translate";
 import { social } from "../../../content/social";
 import Plus from "../../../components/icons/Plus.vue";
 import WarningModal from "../../../components/WarningModal.vue";
+import { useRouter } from "../../../composables/useRouter";
 
 import type { ProjectPreview } from "../../../content/types";
 
@@ -17,13 +18,13 @@ const tlRef = ref<gsap.core.Timeline | null>(null);
 const wrapperRef = ref<HTMLDivElement | null>(null);
 const imageRef = ref<HTMLImageElement | null>(null);
 const isModalOpen = ref(false);
+const router = useRouter();
 
 const props = defineProps<{
   preview?: ProjectPreview;
 }>();
 
 const targetProjectSlug = "aws-cloud-portfolio";
-const targetLiveUrl = "https://ddusufgoys11.cloudfront.net";
 
 const handleProjectClick = (event: Event) => {
   if (props.preview?.slug === targetProjectSlug) {
@@ -35,7 +36,8 @@ const handleProjectClick = (event: Event) => {
 
 const handleModalConfirm = () => {
   isModalOpen.value = false;
-  window.location.href = targetLiveUrl;
+  const slug = props.preview?.slug || targetProjectSlug;
+  router.push(`/project/${slug}`);
 };
 
 const handleModalClose = () => {
@@ -140,9 +142,9 @@ onUnmounted(() => {
     <WarningModal
       v-if="props.preview.slug === targetProjectSlug"
       :isOpen="isModalOpen"
-      title="Xác nhận truy cập"
-      message="Bạn sắp mở phiên bản live AWS CloudFront của AWS Cloud Portfolio."
-      confirmText="Mở live site"
+      title="XÁC NHẬN"
+      message="Hoàng Sa & Trường Sa là của Việt Nam"
+      confirmText="OK là của Việt Nam"
       @confirm="handleModalConfirm"
       @close="handleModalClose"
     />
