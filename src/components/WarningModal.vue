@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from "vue";
+import { watch } from "vue";
 import Button from "./Button.vue";
 import Clickable from "./Clickable.vue";
 
