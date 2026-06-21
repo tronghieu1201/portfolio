@@ -9,16 +9,38 @@ import ButtonRound from "../../../components/ButtonRound.vue";
 import { t } from "../../../i18n/utils/translate";
 import { social } from "../../../content/social";
 import Plus from "../../../components/icons/Plus.vue";
+import WarningModal from "../../../components/WarningModal.vue";
 
 import type { ProjectPreview } from "../../../content/types";
 
 const tlRef = ref<gsap.core.Timeline | null>(null);
 const wrapperRef = ref<HTMLDivElement | null>(null);
 const imageRef = ref<HTMLImageElement | null>(null);
+const isModalOpen = ref(false);
 
 const props = defineProps<{
   preview?: ProjectPreview;
 }>();
+
+const targetProjectSlug = "aws-cloud-portfolio";
+const targetLiveUrl = "https://ddusufgoys11.cloudfront.net";
+
+const handleProjectClick = (event: Event) => {
+  if (props.preview?.slug === targetProjectSlug) {
+    event.preventDefault();
+    event.stopPropagation();
+    isModalOpen.value = true;
+  }
+};
+
+const handleModalConfirm = () => {
+  isModalOpen.value = false;
+  window.location.href = targetLiveUrl;
+};
+
+const handleModalClose = () => {
+  isModalOpen.value = false;
+};
 
 onMounted(async () => {
   if (!wrapperRef.value || ScrollTrigger.isInViewport(wrapperRef.value)) {
@@ -47,8 +69,43 @@ onUnmounted(() => {
 
 <template>
   <div v-if="props.preview" class="preview-card-wrapper">
-    <!-- Use div instead of Link to enforce modal confirmation -->
+    <div
+      v-if="props.preview.slug === targetProjectSlug"
+      class="preview-card children-unclickable"
+      :aria-label="t('switch-to-project', { project: props.preview.title })"
+      data-cursor="arrow"
+      data-sound="click"
+      data-hoversound="hover"
+      tabindex="0"
+      @click="handleProjectClick"
+      @keydown.enter="handleProjectClick"
+    >
+      <div class="preview-card-top" ref="wrapperRef">
+        <div class="preview-card-image-wrapper">
+          <div class="preview-card-image-container">
+            <img :src="props.preview.thumbnail" :alt="props.preview.title" class="preview-card-image" ref="imageRef" />
+          </div>
+        </div>
+        <div class="preview-card-overlay">
+          <div class="preview-card-edge">
+            <ButtonRound class="preview-card-button" variant="accent" renderAs="div">
+              <ArrowRightLong class="preview-card-button-arrow" />
+            </ButtonRound>
+          </div>
+          <Notch class="preview-card-notch preview-card-notch-left" />
+          <Notch class="preview-card-notch preview-card-notch-right" />
+        </div>
+      </div>
+      <div class="preview-card-content">
+        <div class="preview-card-copys">
+          <h3 class="preview-card-title">{{ props.preview.title }}</h3>
+          <p class="preview-card-description">{{ props.preview.description }}</p>
+        </div>
+      </div>
+    </div>
+
     <Link
+      v-else
       class="preview-card children-unclickable"
       :to="`/project/${props.preview.slug}`"
       :aria-label="t('switch-to-project', { project: props.preview.title })"
@@ -79,6 +136,16 @@ onUnmounted(() => {
         </div>
       </div>
     </Link>
+
+    <WarningModal
+      v-if="props.preview.slug === targetProjectSlug"
+      :isOpen="isModalOpen"
+      title="Xác nhận truy cập"
+      message="Bạn sắp mở phiên bản live AWS CloudFront của AWS Cloud Portfolio."
+      confirmText="Mở live site"
+      @confirm="handleModalConfirm"
+      @close="handleModalClose"
+    />
   </div>
 
   <Link
