@@ -89,13 +89,14 @@ watch(
 }
 
 .modal-content {
-  background-color: var(--color-background-300, var(--color-beige-400));
+  background-color: #da291c;
   border-radius: var(--radius-xl);
   padding: var(--space-lg);
   max-width: 400px;
   width: 90%;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   animation: slideIn 0.3s ease-out;
+  border: 3px solid #000;
 
   @keyframes slideIn {
     from {
@@ -120,10 +121,12 @@ watch(
 
 .modal-title {
   font-size: var(--font-size-title-sm);
-  font-weight: 700;
-  color: var(--color-text-400);
+  font-weight: 900;
+  color: #ffd700;
   text-align: center;
   margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .modal-body {
@@ -132,11 +135,13 @@ watch(
 
 .modal-message {
   font-size: var(--font-size-md);
-  color: var(--color-text-400);
+  color: #ffd700;
   text-align: center;
   line-height: 1.6;
   margin: 0;
-  font-weight: 500;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .modal-footer {
@@ -147,6 +152,17 @@ watch(
 .modal-button {
   width: 100%;
   cursor: pointer;
+  background-color: #ffd700 !important;
+  color: #000 !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  border: 2px solid #000 !important;
+  letter-spacing: 0.5px !important;
+
+  &:hover {
+    background-color: #ffed4e !important;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;
+  }
 
   @include mixins.mq("md") {
     width: auto;
