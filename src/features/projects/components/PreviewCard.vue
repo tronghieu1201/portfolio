@@ -67,14 +67,51 @@ onUnmounted(() => {
 
 <template>
   <div v-if="props.preview" class="preview-card-wrapper">
+    <!-- For weather project, use div instead of Link to enforce modal confirmation -->
+    <div
+      v-if="props.preview.slug === 'weather'"
+      class="preview-card children-unclickable"
+      :aria-label="t('switch-to-project', { project: props.preview.title })"
+      data-cursor="arrow"
+      data-sound="click"
+      data-hoversound="hover"
+      @click="handleProjectClick"
+      tabindex="0"
+      @keydown.enter="handleProjectClick"
+    >
+      <div class="preview-card-top" ref="wrapperRef">
+        <div class="preview-card-image-wrapper">
+          <div class="preview-card-image-container">
+            <img :src="props.preview.thumbnail" :alt="props.preview.title" class="preview-card-image" ref="imageRef" />
+          </div>
+        </div>
+        <div class="preview-card-overlay">
+          <div class="preview-card-edge">
+            <ButtonRound class="preview-card-button" variant="accent" renderAs="div">
+              <ArrowRightLong class="preview-card-button-arrow" />
+            </ButtonRound>
+          </div>
+          <Notch class="preview-card-notch preview-card-notch-left" />
+          <Notch class="preview-card-notch preview-card-notch-right" />
+        </div>
+      </div>
+      <div class="preview-card-content">
+        <div class="preview-card-copys">
+          <h3 class="preview-card-title">{{ props.preview.title }}</h3>
+          <p class="preview-card-description">{{ props.preview.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- For other projects, use Link component for normal navigation -->
     <Link
+      v-else
       class="preview-card children-unclickable"
       :to="`/project/${props.preview.slug}`"
       :aria-label="t('switch-to-project', { project: props.preview.title })"
       data-cursor="arrow"
       data-sound="click"
       data-hoversound="hover"
-      @click="handleProjectClick"
     >
       <div class="preview-card-top" ref="wrapperRef">
         <div class="preview-card-image-wrapper">
@@ -140,6 +177,7 @@ onUnmounted(() => {
   position: relative;
   border-radius: var(--radius-xl);
   z-index: var(--z-index-layout);
+  cursor: pointer;
 
   &::after {
     content: "";
