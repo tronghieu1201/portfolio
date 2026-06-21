@@ -9,16 +9,35 @@ import ButtonRound from "../../../components/ButtonRound.vue";
 import { t } from "../../../i18n/utils/translate";
 import { social } from "../../../content/social";
 import Plus from "../../../components/icons/Plus.vue";
+import WarningModal from "../../../components/WarningModal.vue";
+import { useRouter } from "vue-router";
 
 import type { ProjectPreview } from "../../../content/types";
 
 const tlRef = ref<gsap.core.Timeline | null>(null);
 const wrapperRef = ref<HTMLDivElement | null>(null);
 const imageRef = ref<HTMLImageElement | null>(null);
+const isModalOpen = ref(false);
+const router = useRouter();
 
 const props = defineProps<{
   preview?: ProjectPreview;
 }>();
+
+const handleProjectClick = (e: Event) => {
+  // Show warning modal for weather project
+  if (props.preview?.slug === "weather") {
+    e.preventDefault();
+    isModalOpen.value = true;
+  }
+};
+
+const handleModalConfirm = () => {
+  isModalOpen.value = false;
+  if (props.preview?.slug === "weather") {
+    router.push(`/project/${props.preview.slug}`);
+  }
+};
 
 onMounted(async () => {
   if (!wrapperRef.value || ScrollTrigger.isInViewport(wrapperRef.value)) {
@@ -46,38 +65,50 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Link
-    class="preview-card children-unclickable"
-    :to="`/project/${props.preview.slug}`"
-    :aria-label="t('switch-to-project', { project: props.preview.title })"
-    data-cursor="arrow"
-    data-sound="click"
-    data-hoversound="hover"
-    v-if="props.preview"
-  >
-    <div class="preview-card-top" ref="wrapperRef">
-      <div class="preview-card-image-wrapper">
-        <div class="preview-card-image-container">
-          <img :src="props.preview.thumbnail" :alt="props.preview.title" class="preview-card-image" ref="imageRef" />
+  <div v-if="props.preview" class="preview-card-wrapper">
+    <Link
+      class="preview-card children-unclickable"
+      :to="`/project/${props.preview.slug}`"
+      :aria-label="t('switch-to-project', { project: props.preview.title })"
+      data-cursor="arrow"
+      data-sound="click"
+      data-hoversound="hover"
+      @click="handleProjectClick"
+    >
+      <div class="preview-card-top" ref="wrapperRef">
+        <div class="preview-card-image-wrapper">
+          <div class="preview-card-image-container">
+            <img :src="props.preview.thumbnail" :alt="props.preview.title" class="preview-card-image" ref="imageRef" />
+          </div>
+        </div>
+        <div class="preview-card-overlay">
+          <div class="preview-card-edge">
+            <ButtonRound class="preview-card-button" variant="accent" renderAs="div">
+              <ArrowRightLong class="preview-card-button-arrow" />
+            </ButtonRound>
+          </div>
+          <Notch class="preview-card-notch preview-card-notch-left" />
+          <Notch class="preview-card-notch preview-card-notch-right" />
         </div>
       </div>
-      <div class="preview-card-overlay">
-        <div class="preview-card-edge">
-          <ButtonRound class="preview-card-button" variant="accent" renderAs="div">
-            <ArrowRightLong class="preview-card-button-arrow" />
-          </ButtonRound>
+      <div class="preview-card-content">
+        <div class="preview-card-copys">
+          <h3 class="preview-card-title">{{ props.preview.title }}</h3>
+          <p class="preview-card-description">{{ props.preview.description }}</p>
         </div>
-        <Notch class="preview-card-notch preview-card-notch-left" />
-        <Notch class="preview-card-notch preview-card-notch-right" />
       </div>
-    </div>
-    <div class="preview-card-content">
-      <div class="preview-card-copys">
-        <h3 class="preview-card-title">{{ props.preview.title }}</h3>
-        <p class="preview-card-description">{{ props.preview.description }}</p>
-      </div>
-    </div>
-  </Link>
+    </Link>
+
+    <WarningModal
+      v-if="props.preview.slug === 'weather'"
+      :isOpen="isModalOpen"
+      title="Thông báo"
+      message="Hoàng Sa & Trường Sa là của Việt Nam"
+      confirmText="OK là của Việt Nam"
+      @confirm="handleModalConfirm"
+      @close="() => (isModalOpen = false)"
+    />
+  </div>
 
   <Link
     v-else
@@ -99,6 +130,10 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
+.preview-card-wrapper {
+  width: 100%;
+}
+
 .preview-card {
   --hover: 0;
   position: relative;
