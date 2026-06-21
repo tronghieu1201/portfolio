@@ -10,6 +10,7 @@ import { t } from "../../../i18n/utils/translate";
 import { social } from "../../../content/social";
 import Plus from "../../../components/icons/Plus.vue";
 import WarningModal from "../../../components/WarningModal.vue";
+import { useRouter } from "../../../composables/useRouter";
 
 import type { ProjectPreview } from "../../../content/types";
 
@@ -17,7 +18,7 @@ const tlRef = ref<gsap.core.Timeline | null>(null);
 const wrapperRef = ref<HTMLDivElement | null>(null);
 const imageRef = ref<HTMLImageElement | null>(null);
 const isModalOpen = ref(false);
-const navigateUrl = ref<string>("");
+const router = useRouter();
 
 const props = defineProps<{
   preview?: ProjectPreview;
@@ -27,15 +28,15 @@ const handleProjectClick = (e: Event) => {
   // Show warning modal for weather project
   if (props.preview?.slug === "weather") {
     e.preventDefault();
-    navigateUrl.value = `/project/${props.preview.slug}`;
+    e.stopPropagation();
     isModalOpen.value = true;
   }
 };
 
 const handleModalConfirm = () => {
   isModalOpen.value = false;
-  if (navigateUrl.value) {
-    window.location.href = navigateUrl.value;
+  if (props.preview?.slug === "weather") {
+    router.push(`/project/${props.preview.slug}`);
   }
 };
 
